@@ -3,8 +3,6 @@
 #BSUB -n 12
 #BSUB -M 48
 #BSUB -R rusage[mem=48]
-#BSUB -o /rsrch5/home/epi/stbresnahan/logs/bsub/
-#BSUB -e /rsrch5/home/epi/stbresnahan/logs/bsub/
 #BSUB -q medium
 
 # Directories
