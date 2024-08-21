@@ -1,0 +1,29 @@
+#!/bin/sh
+#BSUB -W 4:00
+#BSUB -n 12
+#BSUB -M 48
+#BSUB -R rusage[mem=48]
+#BSUB -o /rsrch5/home/epi/stbresnahan/logs/bsub/
+#BSUB -e /rsrch5/home/epi/stbresnahan/logs/bsub/
+#BSUB -q medium
+
+# Directories
+
+DIR_GENOME="/rsrch5/home/epi/bhattacharya_lab/data/GenomicReferences"
+DIR_DATA="/rsrch5/home/epi/stbresnahan/bhattacharya_lab/data/Shin_042924/RNA-seq"
+DIR_SCRIPTS="/rsrch5/home/epi/stbresnahan/scratch/Shin_042924"
+
+# processPEfastq.sh
+# arguments: THREADS DIR_PROJECT TXINDEX_star REFFLAT RIBO GENOMEFASTA TXINDEX_salmon LIBID READ1 READ2
+# NOTE: do not modify "XFILEX" if running submit_loop.sh
+
+sh ${DIR_SCRIPTS}/processPEfastq.sh 12 \
+/rsrch5/home/epi/stbresnahan/scratch/Shin_042924/Processed \
+${DIR_GENOME}/star_db_gencode_v38 \
+${DIR_GENOME}/txome/gencode_v38/gencode.v38.primary_assembly.annotation.nochr.refflat \
+${DIR_GENOME}/txome/gencode_v38/gencode.v38.rRNA.nochr.interval_list \
+${DIR_GENOME}/genome/Homo_sapiens.GRCh38.dna.primary_assembly.fa \
+${DIR_GENOME}/txome/gencode.v38.salmon_index \
+XFILEX \
+${DIR_DATA}/XFILEX_R1_001.fastq.gz \
+${DIR_DATA}/XFILEX_R2_001.fastq.gz
