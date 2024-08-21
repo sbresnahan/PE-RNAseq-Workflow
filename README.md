@@ -26,16 +26,17 @@ Combines output of step 4 above for all files within a given directory specified
 ## Workflow:
 
 1) Modify run_processPEfastq.lsf to update BSUB arguments and paths to your HPC directories
-2) Run `sh submit_loop.sh SAMPLEIDs.txt` where `SAMPLEIDS.txt` is a single-column file listing the **SAMPLEID** of paired-end sequence reads
+2) Run `sh submit_loop.sh SAMPLEIDs.txt /dir/to/logs`
 3) Run `Rscript PicardMetrics2Matrix.R` to combine the output of the Picard tools into tables
 
 ## Usage:
 
 **submit_loop.sh**:
 ```shell
-usage: sh submit_loop.sh SAMPLEIDs.txt
+usage: sh submit_loop.sh SAMPLEIDs.txt /dir/to/logs
 arguments:
   SAMPLEIDS.txt              Path to a single-column file listing the SAMPLEID of paired-end sequence reads
+  /dir/to/logs               Specifies a directory for saving submission logs
 ```
 
 **processPEfastq.sh**:
